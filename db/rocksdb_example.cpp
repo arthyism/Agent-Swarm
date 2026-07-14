@@ -29,16 +29,20 @@ int main() {
     std::cout << "Database opened successfully!" << std::endl;
     
     cout<<status.ToString()<<endl;
-    
-    string key = "my_key_1";
-    string value = "hemllo_1";
-    cout << "putting an item in db" << endl;
-    putDB(key, value, db.get()); 
+    // string key1 = "my_key_1";
+    // string value5 = "hemllo_1";
+    // cout << "putting an item in db" << endl;
+    // putDB(key1, value5, db.get());
+
+    string key = "my_key_2";
+    // string value = "hemllo_2";
+    // cout << "putting an item in db" << endl;
+    // putDB(key, value, db.get()); 
 
 
     cout<<"doing get db"<<endl;
     string value1;
     db->Get(rocksdb::ReadOptions(), key, &value1);
-    cout<<"VAlue1 :" << value<<endl;
+    cout<<"VAlue1 :" << value1<<endl;
     return 0;
 }
