@@ -9,3 +9,9 @@ c++ -std=c++17 $(pkg-config --cflags --libs grpc++ protobuf) hello.pb.cc hello.g
 c++ -std=c++17 $(pkg-config --cflags --libs grpc++ protobuf) hello.pb.cc hello.grpc.pb.cc client.cpp -o client
 run serverand clent in different terminals
 ./server ./client
+
+
+#siglenode server 
+g++ -std=c++17 -I/opt/homebrew/include -L/opt/homebrew/lib \
+    -o db-server db-server.cpp -lrocksdb
+  ./db-server
