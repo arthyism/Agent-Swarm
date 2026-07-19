@@ -1,8 +1,8 @@
-##single node architecture
+# Single node architecture
 
 So in simgle words we are bulding a server and a client 
 
-#Server:
+## Server:
 gets the request from the client(agents), 
 two kinds of requests 
 
@@ -25,4 +25,12 @@ Client calls VectorSearch(query_embedding, k)
   → Fetch payloads from RocksDB
   → Return results
 
+
+
+## Status
+
+Single node server
+-intitialise_db, 
+-get_db,
+-put_db
 
