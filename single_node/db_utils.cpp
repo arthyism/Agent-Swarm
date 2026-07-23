@@ -1,3 +1,4 @@
+#include "db_utils.h"
 #include <cassert>
 #include <iostream>
 #include <cstdint>
@@ -61,17 +62,14 @@ LogData getDB(const string& key, rocksdb::DB* db) {
 }
 
 std::unique_ptr<rocksdb::DB> initialise_db(const string& db_name) {
-    rocksdb::DB* db_raw = nullptr;                     
-    std::unique_ptr<rocksdb::DB> db;                   
+    std::unique_ptr<rocksdb::DB> db;
     rocksdb::Options options;
     options.create_if_missing = true;
-    rocksdb::Status status = rocksdb::DB::Open(options, db_name, &db_raw);
-    assert(status.ok());
+    rocksdb::Status status = rocksdb::DB::Open(options, db_name, &db);
     if (!status.ok()) {
         std::cerr << status.ToString() << std::endl;
         return nullptr;
     }
-    db.reset(db_raw);
     std::cout << "Database opened successfully!" << std::endl;
     return db;
 }
