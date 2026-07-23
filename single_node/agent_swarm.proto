@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package agentswarm;
+
+service AgentSwarm {
+    rpc Put(PutRequest) returns (PutResponse);
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc VectorSearch(VectorSearchRequest) returns (VectorSearchResponse);
+}
+
+message PutRequest {
+    string key = 1;
+    string payload = 2;
+    string timestamp = 3;
+    repeated float embedding = 4;
+}
+
+message PutResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetRequest {
+    string key = 1;
+}
+
+message GetResponse {
+    bool found = 1;
+    string key = 2;
+    string payload = 3;
+    string timestamp = 4;
+    repeated float embedding = 5;
+}
+
+message VectorSearchRequest {
+    repeated float query_embedding = 1;
+    int32 k = 2;
+}
+
+message VectorSearchResult {
+    string key = 1;
+    float distance = 2;
+    string payload = 3;
+    string timestamp = 4;
+}
+
+message VectorSearchResponse {
+    repeated VectorSearchResult results = 1;
+}
